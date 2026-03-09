@@ -192,7 +192,7 @@ curl -X DELETE http://localhost:3000/order/v10089015vdb-01
 
 ---
 
-## 🔄 Mapeamento de Campos
+# Mapeamento de Campos
 
 | Body da Requisição (PT) | Banco de Dados (EN) |
 |-------------------------|---------------------|
