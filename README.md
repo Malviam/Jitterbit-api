@@ -203,3 +203,4 @@ curl -X DELETE http://localhost:3000/order/v10089015vdb-01
 | `items[].quantidadeItem`| `items[].quantity`  |
 | `items[].valorItem`     | `items[].price`     |
 
+Adicionado Collections do Postman para referencia e documentação.
