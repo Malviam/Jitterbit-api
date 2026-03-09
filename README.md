@@ -1,7 +1,9 @@
 # Jitterbit API — Passo a Passo
 
 API RESTful em Node.js com Express e MongoDB Atlas para gerenciamento de pedidos.
+Com documentação em Postman
 
+Postman: https://documenter.getpostman.com/view/19756713/2sBXcLhJJc
 ---
 
 # Estrutura do Projeto
