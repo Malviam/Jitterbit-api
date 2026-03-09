@@ -1,10 +1,10 @@
-# 🚀 Jitterbit Orders API — Passo a Passo Completo
+# Jitterbit API — Passo a Passo
 
 API RESTful em Node.js com Express e MongoDB Atlas para gerenciamento de pedidos.
 
 ---
 
-## 📁 Estrutura do Projeto
+# Estrutura do Projeto
 
 ```
 jitterbit-api/
@@ -25,11 +25,11 @@ jitterbit-api/
 └── package.json
 ```
 
----
 
-## 🛠️ PASSO A PASSO DE CONFIGURAÇÃO
 
-### PASSO 1 — Instalar o Node.js
+# PASSO A PASSO DE CONFIGURAÇÃO
+
+# PASSO 1 — Instalar o Node.js
 Acesse https://nodejs.org e baixe a versão LTS (recomendada).
 Verifique a instalação:
 ```bash
@@ -39,39 +39,20 @@ npm -v
 
 ---
 
-### PASSO 2 — Criar conta e cluster no MongoDB Atlas
+# Criar cluster no MongoDB Atlas
+Criado cluser ordersdb no atlas
 
-1. Acesse https://www.mongodb.com/cloud/atlas e crie uma conta gratuita.
-2. Clique em **"Build a Database"** → escolha **Free (M0)**.
-3. Escolha o provedor (AWS/Google/Azure) e região mais próxima → clique **"Create"**.
-4. **Crie um usuário do banco:**
-   - Username: `admin` (ou qualquer nome)
-   - Password: crie uma senha forte → clique **"Create User"**
-5. **Libere o acesso de rede:**
-   - Em "Where would you like to connect from?" → clique **"Add My Current IP Address"**
-   - Ou adicione `0.0.0.0/0` para liberar qualquer IP (desenvolvimento)
-6. Clique em **"Finish and Close"** → **"Go to Database"**
+# Obter a Connection String do Atlas
+String do atlas :
+MONGODB_URI=mongodb+srv://ronaldoricorj:ronaldo123@ordersdb.xiv9l8w.mongodb.net/?appName=ordersdb
+
+PORT=3000
+
+  
 
 ---
 
-### PASSO 3 — Obter a Connection String do Atlas
-
-1. No painel do cluster, clique em **"Connect"**
-2. Escolha **"Drivers"**
-3. Selecione **Node.js** na versão mais recente
-4. Copie a string parecida com:
-   ```
-   mongodb+srv://admin:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
-   ```
-5. Substitua `<password>` pela senha criada no passo anterior
-6. Adicione o nome do banco antes do `?`:
-   ```
-   mongodb+srv://admin:suasenha@cluster0.xxxxx.mongodb.net/jitterbit-orders?retryWrites=true&w=majority
-   ```
-
----
-
-### PASSO 4 — Clonar/Criar o projeto e instalar dependências
+# Clonar/Criar o projeto e instalar dependências
 
 ```bash
 # Entrar na pasta do projeto
@@ -83,7 +64,7 @@ npm install
 
 ---
 
-### PASSO 5 — Configurar o arquivo .env
+# Configurar o arquivo .env
 
 Copie o arquivo de exemplo e edite com seus dados:
 ```bash
@@ -92,13 +73,12 @@ cp .env.example .env
 
 Edite o `.env`:
 ```env
-MONGODB_URI=mongodb+srv://admin:suasenha@cluster0.xxxxx.mongodb.net/jitterbit-orders?retryWrites=true&w=majority
-PORT=3000
-```
+MONGODB_URI=mongodb+srv://ronaldoricorj:ronaldo123@ordersdb.xiv9l8w.mongodb.net/?appName=ordersdb
 
+PORT=3000
 ---
 
-### PASSO 6 — Rodar a aplicação
+# PASSO 6 — Rodar a aplicação
 
 ```bash
 # Modo desenvolvimento (reinicia automaticamente ao salvar)
@@ -116,9 +96,9 @@ Você deverá ver no terminal:
 
 ---
 
-## 📡 ENDPOINTS DISPONÍVEIS
+# ENDPOINTS DISPONÍVEIS
 
-### ➕ Criar Pedido
+# Criar Pedido
 **POST** `http://localhost:3000/order`
 
 Body:
@@ -153,17 +133,17 @@ Resposta (201):
 
 ---
 
-### 🔍 Buscar Pedido por Número
+# Buscar Pedido por Número
 **GET** `http://localhost:3000/order/v10089015vdb-01`
 
 ---
 
-### 📋 Listar Todos os Pedidos
+# Listar Todos os Pedidos
 **GET** `http://localhost:3000/order/list`
 
 ---
 
-### ✏️ Atualizar Pedido
+# Atualizar Pedido
 **PUT** `http://localhost:3000/order/v10089015vdb-01`
 
 Body (envie apenas os campos que deseja atualizar):
@@ -182,12 +162,12 @@ Body (envie apenas os campos que deseja atualizar):
 
 ---
 
-### 🗑️ Deletar Pedido
+# Deletar Pedido
 **DELETE** `http://localhost:3000/order/v10089015vdb-01`
 
 ---
 
-## 🧪 Testando com cURL
+# Testando com cURL
 
 ```bash
 # Criar pedido
@@ -223,38 +203,3 @@ curl -X DELETE http://localhost:3000/order/v10089015vdb-01
 | `items[].quantidadeItem`| `items[].quantity`  |
 | `items[].valorItem`     | `items[].price`     |
 
----
-
-## 📤 PASSO 7 — Subir no GitHub
-
-```bash
-# Inicializar repositório git
-git init
-
-# Adicionar todos os arquivos (o .gitignore já exclui node_modules e .env)
-git add .
-
-# Primeiro commit
-git commit -m "feat: initial project setup - Orders API"
-
-# Criar repositório no GitHub (github.com → New repository)
-# Depois linkar o repositório remoto:
-git remote add origin https://github.com/SEU_USUARIO/jitterbit-orders-api.git
-
-# Enviar para o GitHub
-git branch -M main
-git push -u origin main
-```
-
----
-
-## 📦 Códigos HTTP utilizados
-
-| Situação                   | Status |
-|----------------------------|--------|
-| Pedido criado              | 201    |
-| Operação bem-sucedida      | 200    |
-| Dados inválidos no body    | 400    |
-| Pedido não encontrado      | 404    |
-| Pedido já existe (duplicado)| 409   |
-| Erro interno do servidor   | 500    |
