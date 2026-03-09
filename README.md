@@ -40,7 +40,7 @@ npm -v
 ---
 
 # Criar cluster no MongoDB Atlas
-Criado cluser ordersdb no atlas
+Cluster já criado.
 
 # Obter a Connection String do Atlas
 String do atlas :
